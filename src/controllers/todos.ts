@@ -14,9 +14,9 @@ export const createTodo: RequestHandler = (req, res, next) => {
   res.status(201).json({ message: "Create the new todo. ", todo: newTodo });
 };
 
-export const retrieveSingleTodo: RequestHandler = (req, res, next) => {
-  const { id } = req.params as { id: string };
-
+export const getOneTodo: RequestHandler<{ id: string }> = (req, res, next) => {
+  //   const { id } = req.params as { id: string };
+  const { id } = req.params;
   const todo = TODOS.find((item) => item.id === id);
   if (!todo) {
     res.status(404).json({ message: "No record find with given Id" });
@@ -25,7 +25,7 @@ export const retrieveSingleTodo: RequestHandler = (req, res, next) => {
   res.status(200).json({ message: "Record with given Id", todo });
 };
 
-export const retrieveAllTodos: RequestHandler = (req, res, next) => {
+export const getAllTodos: RequestHandler = (req, res, next) => {
   let message =
     TODOS.length === 0 ? "There is nothing to return " : "List of records ";
   res.status(200).json({ message, todo: TODOS });

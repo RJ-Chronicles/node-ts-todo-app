@@ -2,7 +2,7 @@
 // import { Request, Response, NextFunction } from "express"
 // export const createTodo = (req:Request, res: Response, next: NextFunction)=>{}
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteTodo = exports.updateTodo = exports.retrieveAllTodos = exports.retrieveSingleTodo = exports.createTodo = void 0;
+exports.deleteTodo = exports.updateTodo = exports.getAllTodos = exports.getOneTodo = exports.createTodo = void 0;
 const todo_1 = require("../models/todo");
 const TODOS = [];
 const createTodo = (req, res, next) => {
@@ -13,7 +13,8 @@ const createTodo = (req, res, next) => {
     res.status(201).json({ message: "Create the new todo. ", todo: newTodo });
 };
 exports.createTodo = createTodo;
-const retrieveSingleTodo = (req, res, next) => {
+const getOneTodo = (req, res, next) => {
+    //   const { id } = req.params as { id: string };
     const { id } = req.params;
     const todo = TODOS.find((item) => item.id === id);
     if (!todo) {
@@ -22,12 +23,12 @@ const retrieveSingleTodo = (req, res, next) => {
     }
     res.status(200).json({ message: "Record with given Id", todo });
 };
-exports.retrieveSingleTodo = retrieveSingleTodo;
-const retrieveAllTodos = (req, res, next) => {
+exports.getOneTodo = getOneTodo;
+const getAllTodos = (req, res, next) => {
     let message = TODOS.length === 0 ? "There is nothing to return " : "List of records ";
     res.status(200).json({ message, todo: TODOS });
 };
-exports.retrieveAllTodos = retrieveAllTodos;
+exports.getAllTodos = getAllTodos;
 const updateTodo = (req, res, next) => {
     const { id } = req.params;
     const todoIndex = TODOS.findIndex((item) => item.id === id);

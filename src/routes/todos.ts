@@ -1,8 +1,8 @@
 import { Router } from "express";
 import {
   createTodo,
-  retrieveSingleTodo,
-  retrieveAllTodos,
+  getOneTodo,
+  getAllTodos,
   updateTodo,
   deleteTodo,
 } from "../controllers/todos";
@@ -11,9 +11,9 @@ const router = Router();
 
 router.post("/", createTodo);
 
-router.get("/", retrieveAllTodos);
+router.get("/", getAllTodos);
 
-router.get("/:id", retrieveSingleTodo);
+router.get("/:id", getOneTodo);
 
 router.patch("/:id", updateTodo);
 
