@@ -11,7 +11,7 @@ To setup node typescript
 10) create controller folder with different controller files
 11) create  model folder for req/res blue print
 12) type casting will help to understan the what type of value is coming through request body :     const {text} = (req.body as {text: string});
-
+13) tsc -w  " to enable watchmode"
 
 tsc -w : typescript watch model
 nmp start : to run application
